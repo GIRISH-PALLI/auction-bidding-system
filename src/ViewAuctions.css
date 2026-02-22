@@ -1,0 +1,224 @@
+/* Main container */
+.auctions-container {
+    max-width: 1200px;
+    width: 95%;
+    height: calc(100vh - 120px);
+    margin: 20px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Fixed header */
+.auctions-container h2 {
+    text-align: center;
+    color: #2c3e50;
+    padding: 20px 0;
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+    background: linear-gradient(45deg, #2c3e50, #3498db);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Scrollable grid container */
+.auctions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Fixed 4 columns */
+    gap: 30px;
+    padding: 30px;
+    overflow-y: auto;
+    height: calc(100% - 80px); /* Adjust based on header height */
+}
+
+/* Auction card */
+.auction-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    height: 500px; /* Fixed height for cards */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auction-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Image container */
+.auction-image-container {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.auction-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.auction-card:hover .auction-image-container img {
+    transform: scale(1.05);
+}
+
+/* Auction details */
+.auction-details {
+    padding: 15px;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Scrollbar styling */
+.auctions-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.auctions-grid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.auctions-grid::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 4px;
+}
+
+.auctions-grid::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
+}
+
+/* Content styling */
+.auction-details h3 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.seller {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.description {
+    color: #34495e;
+    font-size: 14px;
+    line-height: 1.4;
+    flex-grow: 1;
+}
+
+.price {
+    font-size: 20px;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.time-left {
+    color: #27ae60;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* Bid history section */
+.bid-history {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: auto;
+}
+
+.bid-history h4 {
+    margin: 0 0 8px 0;
+    color: #2c3e50;
+    font-size: 14px;
+}
+
+.bid-list-container {
+    max-height: 80px;
+    overflow-y: auto;
+}
+
+.bid-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 8px;
+    padding: 4px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 12px;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .auctions-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .auctions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .auctions-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* No auctions message */
+.no-auctions {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #7f8c8d;
+    font-size: 18px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+/* Button styling */
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+/* Loading state */
+.loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #7f8c8d;
+    font-size: 18px;
+}
